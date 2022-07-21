@@ -15,42 +15,43 @@ basemapOSM.addTo(map);
 
 
 //***********************LISTA DE SERVICIOS***********//
-var Departamento = L.tileLayer.wms("http://localhost:8080/geoserver/proyecto_webgis/wms?", {
-	   layers: "proyecto_webgis:departamentos_tacnaa",//gisweb:centros educativos tacna
+var departamento = L.tileLayer.wms("http://localhost:8080/geoserver/proyecto_webgis/wms?", {
+	   layers: "proyecto_webgis:departamentos_tacna",//gisweb:centros educativos tacna
 	   format: 'image/png',
 	   transparent: true,
 	   version: '1.1.1',
 	   attribution: "SENCICO"
-	}).addTo(map);
+	})
+departamento.addTo(map);
+//***********************LISTA DE SERVICIOS***********//
 
-
-
-
-var Provincia = L.tileLayer.wms("http://localhost:8080/geoserver/proyecto_webgis/wms?", {
+var provincia = L.tileLayer.wms("http://localhost:8080/geoserver/proyecto_webgis/wms?", {
 	   layers: "proyecto_webgis:provincias_tacna",//gisweb:centros educativos tacna
 	   format: 'image/png',
 	   transparent: true,
 	   version: '1.1.1',
 	   attribution: "SENCICO"
-	}).addTo(map);
+	})
+provincia.addTo(map);
+//***********************LISTA DE SERVICIOS***********//
 
-
-var Distrito = L.tileLayer.wms("http://localhost:8080/geoserver/proyecto_webgis/wms?", {
+var distrito = L.tileLayer.wms("http://localhost:8080/geoserver/proyecto_webgis/wms?", {
 	   layers: "proyecto_webgis:distritos_tacna",//gisweb:centros educativos tacna
 	   format: 'image/png',
 	   transparent: true,
 	   version: '1.1.1',
 	   attribution: "SENCICO"
-	}).addTo(map);
-
-
+	})
+distrito.addTo(map);
+//***********************LISTA DE SERVICIOS***********//
 var centros = L.tileLayer.wms("http://localhost:8080/geoserver/proyecto_webgis/wms?", {
 	   layers: "proyecto_webgis:centros_educativos_tacna1",//gisweb:centros educativos tacna
 	   format: 'image/png',
 	   transparent: true,
 	   version: '1.1.1',
 	   attribution: "SENCICO"
-	}).addTo(map);
+	})
+centros.addTo(map);
 	
 //***********************LISTA DE SERVICIOS***********//
 
@@ -59,9 +60,12 @@ var baseMaps = {
 };
 
 var overlayMaps = {
-    "centros educativos": centros
 
-   };
+    "centros educativos": centros,
+   	"distritos tacna": distrito,
+   	"provincia tacna": provincia,
+   	"departamento tacna": departamento
+};
 
 L.control.layers(baseMaps, overlayMaps,{
     position: 'topright', // 'topleft', 'bottomleft', 'bottomright'
@@ -70,6 +74,3 @@ L.control.layers(baseMaps, overlayMaps,{
 
 //***********************LISTA DE SERVICIOS***********//
 
-L.control.scale({
-  imperial: false
-}).addTo(map);
